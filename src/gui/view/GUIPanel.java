@@ -66,39 +66,70 @@ public class GUIPanel extends JPanel
 		{
 			public void mouseClicked(MouseEvent clicked)
 			{
-				changeRandomColor();
+				// changeRandomColor();
+				if(SwingUtilities.isLeftMouseButton(clicked))
+				{
+					firstTextField.setText("u are using the left click");
+				}
+				else if (SwingUtilities.isRightMouseButton(clicked))
+				{
+					firstTextField.setText("you right clicked");
+				}
+			
 			}
 
 			public void mouseReleased(MouseEvent released)
 			{
-				changeRandomColor();
+				// changeRandomColor();
 			}
 
 			public void mouseEntered(MouseEvent entered)
 			{
-				//changeRandomColor();
+				// changeRandomColor();
 			}
 
 			public void mouseExited(MouseEvent exited)
 			{
-				//changeRandomColor();
+				// changeRandomColor();
 			}
 
 			public void mousePressed(MouseEvent pressed)
 			{
-				changeRandomColor();
+				// changeRandomColor();
 			}
 		});
+
+		this.addMouseMotionListener(new MouseMotionListener()
+		{
+			public void mouseMoved(MouseEvent moved)
+			{
+				firstButton.setText("Mouse X; " + moved.getX() + "Mouse Y: " + moved.getY());
+				if (((moved.getX() > 25 && moved.getX() < 40) && (moved.getY() > 50 && moved.getY() < 70)))
+				{
+					changeRandomColor();
+				}
+
+			}
+
+			public void mouseDragged(MouseEvent dragged)
+			{
+				if(dragged.isAltDown())
+				{
+					firstTextField.setText("you held alt and dragged!");
+				}
+			}
+		});
+
 	}
 
 	private void changeRandomColor()
 	{
 		int red, green, blue;
-		
+
 		red = (int) (Math.random() * 256);
-		green = (int) (Math.random() *256);
-		blue = (int) (Math.random() *256);
-		
+		green = (int) (Math.random() * 256);
+		blue = (int) (Math.random() * 256);
+
 		this.setBackground(new Color(red, green, blue));
 	}
 }
