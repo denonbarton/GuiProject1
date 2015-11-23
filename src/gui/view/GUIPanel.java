@@ -11,6 +11,7 @@ import javax.swing.SpringLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import gui.controller.GuiController;
+import java.awt.Color;
 
 public class GUIPanel extends JPanel
 
@@ -65,28 +66,39 @@ public class GUIPanel extends JPanel
 		{
 			public void mouseClicked(MouseEvent clicked)
 			{
-
+				changeRandomColor();
 			}
 
 			public void mouseReleased(MouseEvent released)
 			{
-
+				changeRandomColor();
 			}
 
 			public void mouseEntered(MouseEvent entered)
 			{
-
+				//changeRandomColor();
 			}
 
 			public void mouseExited(MouseEvent exited)
 			{
-
+				//changeRandomColor();
 			}
 
 			public void mousePressed(MouseEvent pressed)
 			{
-
+				changeRandomColor();
 			}
 		});
+	}
+
+	private void changeRandomColor()
+	{
+		int red, green, blue;
+		
+		red = (int) (Math.random() * 256);
+		green = (int) (Math.random() *256);
+		blue = (int) (Math.random() *256);
+		
+		this.setBackground(new Color(red, green, blue));
 	}
 }
